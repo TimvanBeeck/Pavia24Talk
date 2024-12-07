@@ -1,0 +1,76 @@
+\mode<presentation>
+
+\RequirePackage{color}
+
+\definecolor{GOE}{RGB}{35,95,150}
+\definecolor{LG}{RGB}{211,211,211}
+\definecolor{LLG}{RGB}{235,235,235}
+\definecolor{DG}{RGB}{130,130,130}
+
+\setbeamertemplate{itemize items}[circle]
+
+
+% Title page
+\defbeamertemplate*{title page}{Slim}[1][]
+{ 
+    \begin{beamercolorbox}[wd=\paperwidth,leftskip=0.5cm,#1]{title page header}
+     \color{GOE} \huge \bfseries \inserttitle%
+    \end{beamercolorbox}%
+    \vskip0.75cm%
+    \begin{beamercolorbox}[wd=\paperwidth,leftskip=0.5cm,#1]{author}
+      \usebeamerfont{author} \color{DG} \insertauthor%
+    \end{beamercolorbox}
+     \vskip0.2cm%
+     \begin{beamercolorbox}[wd=\paperwidth,leftskip=0.5cm,#1]{author}
+      \usebeamerfont{author} \color{DG} \insertinstitute%
+    \end{beamercolorbox}
+     \vskip0.5cm%
+     \begin{beamercolorbox}[wd=\paperwidth,leftskip=0.5cm,#1]{logo}
+      \begin{center}
+        \begin{tabular}{ll}   
+          ${}^1$&
+          ${}^2$\\[-3ex] 
+        \hphantom{${}^1$} \includegraphics[height=1.2cm,keepaspectratio]{graphics/Notre-Dame-Logo.png}&
+        \hphantom{${}^1$} \includegraphics[height=1.2cm,keepaspectratio]{graphics/goe.png}\\%[-0.2cm]      \\%[-0.2cm]  %\scriptsize 
+        \end{tabular}
+      \end{center}  
+    \end{beamercolorbox}
+     \vskip0.5cm%
+    \begin{beamercolorbox}[wd=\paperwidth,leftskip=0.5cm,#1]{date}
+      \usebeamerfont{author} \color{DG}  \insertdate%
+    \end{beamercolorbox}
+  \vfill
+}
+
+
+% https://www.youtube.com/watch?v=9kc5cQKmkPs
+
+
+\newcommand{\mysectionpage}{
+    \begingroup
+    \setbeamertemplate{background}{
+        \begin{tikzpicture}                                         %edit this tikzpicture to customize the size and colors of the background rectangles
+            \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+            \fill[color=white] (0,0) rectangle(\the\paperwidth,\the\paperheight);     
+        \end{tikzpicture}
+    }
+    \setbeamercolor{section page}{fg=GOE}
+    \setbeamertemplate{section page}{
+    \begin{tikzpicture}                                             %edit this tikzpicture to customize the appearance of the section heading
+        \node[overlay,right] at (2.81,0) {\huge \insertsectionhead};
+        \draw[overlay,line width=0.5mm,color=LLG] (3,-1) -- (11,-1);
+        \draw[overlay,line width=0.5mm] (3,-1) -- (3+8*\insertframenumber/\inserttotalframenumber,-1);
+    \end{tikzpicture}
+    }
+    %\frame[plain,noframenumbering]{\sectionpage}
+    \frame[plain]{\sectionpage}
+    \addtocounter{framenumber}{-1} 
+    \endgroup
+    
+}
+
+%pages goes from -1 to 15 -> 7 is the middle
+
+
+
+\mode<all>

@@ -1,0 +1,31 @@
+\documentclass{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+
+\usepackage{amssymb,amsmath,amsthm,amsfonts}
+\usepackage{mathtools}
+\usepackage{commath}
+\usepackage{dsfont}
+\usepackage{calrsfs}
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+\usepackage{stmaryrd}
+\usepackage{etoolbox}
+
+\usepackage{booktabs}
+
+\usepackage{xcolor}
+\usepackage{pgfplots}
+	\pgfplotsset{compat=1.16}
+	\usetikzlibrary{decorations.pathreplacing}
+
+\usepackage[textsize=footnotesize]{todonotes}
+\setlength{\marginparwidth}{2cm}
+
+\begin{document}
+\begin{tikzpicture}[scale=1, line width=0.1pt]
+\input{mesh}
+\end{tikzpicture}
+
+\end{document}
+

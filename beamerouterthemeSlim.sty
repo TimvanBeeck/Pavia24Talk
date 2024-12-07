@@ -1,0 +1,43 @@
+\mode<presentation>
+
+\RequirePackage{color}
+
+\definecolor{GOE}{RGB}{35,95,150}
+\definecolor{LG}{RGB}{211,211,211}
+\definecolor{LLG}{RGB}{235,235,235}
+\definecolor{DG}{RGB}{130,130,130}
+
+% Frame title
+\defbeamertemplate*{frametitle}{Slim}[1][]
+{
+  \begin{beamercolorbox}[wd=\paperwidth,ht=1.2cm]{frametitle} 
+  \begin{tikzpicture}
+  \useasboundingbox[fill=white](0,0) rectangle(\the\paperwidth,1.2);
+   \ifx\insertframesubtitle\@empty%
+      {\node[anchor=west,font=\Large] at (0.5,0.61){\insertframetitle};}
+      \else%
+      {\node[anchor= west, white,font=\Large] at (0.5,0.81){\insertframetitle};%
+       \node[anchor= west, white,font=\small] at (0.5,0.41){\insertframesubtitle};}%
+      \fi
+      \node[anchor=west] at (12,0.61)
+   			{\includegraphics[width=.25\textwidth]{GOE_logo.png}};
+    \draw[line width=0.25mm,color=LG] (0,0) -- (8,0);
+  \end{tikzpicture}
+  \end{beamercolorbox}
+}
+
+\defbeamertemplate*{footline}{Slim}[1][]
+{
+	\begin{beamercolorbox}[wd=\paperwidth,ht=0.3cm]{footline} 
+ 	 \begin{tikzpicture}
+ 	 \useasboundingbox[fill=white](0,0) rectangle(\the\paperwidth,0.3);
+ 	 %\node[anchor=west,color=DG] at (0.5,0.15) {\insertdate};
+ 	 %\node[anchor=west,color=DG] at (6.5,0.15) {\insertauthor, \inserttitle};
+ 	 \node[anchor=west,color=DG] at (15.1,0.15){\theframenumber /$\!$ \inserttotalframenumber};
+ 	 \end{tikzpicture}
+ 	 \end{beamercolorbox}
+}
+
+
+
+\mode<all>
