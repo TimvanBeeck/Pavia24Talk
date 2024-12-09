@@ -318,14 +318,23 @@ Set1-5\nextlist
 \begin{frame}{Introduction}
   \begin{minipage}{0.7\textwidth}
     \begin{itemize}
-      \item \alert{Goal:} describe time-harmonic (acoustic) wave propagation in a nematic liquid crystal 
-      \item Korteweg-fluid: $\underline{\underline{\sigma}} = p \underline{\underline{I}} - u_1 \rho (\nabla \rho \otimes \nabla \rho)$
+      \item \alert{Goal:} describe time-harmonic (acoustic) wave propagation in a \alert{nematic liquid crystal} 
+      \item<2-> Korteweg-fluid: $\underline{\underline{\sigma}} = p \underline{\underline{I}} - u_1 \rho (\nabla \rho \otimes \nabla \rho)$
+      \item<3-> nematic LC can be considered as a Korteweg-fluid:
+      \begin{equation*}
+        \underline{\underline{\sigma}} = p \underline{\underline{I}} - u_1 \rho (\nabla \rho \otimes \nabla \rho) + u_2 (\nabla \rho \cdot \bm{n}) \nabla \rho \otimes \bm{n}
+      \end{equation*}
+      \item<4->[\nicearrow{GOE}{-0.07cm}] time harmonic acoustic waves described by the \alert{nematic Helmholtz-Korteweg} equations! 
+      \item<4->[\nicearrow{GOE}{-0.07cm}] how does the alignment of the nematic field influence the propagation of the acoustic wave? 
     \end{itemize}
   \end{minipage}
   \hfill
   \begin{minipage}{0.29\textwidth}
     \begin{center}
-      \includegraphics[width=3.5cm,keepaspectratio]{LiquidCrystal-MesogenOrder-Nematic.jpeg}
+      \begin{tikzpicture}
+        \node at (0,0) {\includegraphics[width=2cm,keepaspectratio]{ActaNLC.png}};
+        \node[align=center,font=\tiny\linespread{0.95}\selectfont] at (0,-2.5) {\tiny \color{gray} W. Wang, L. Zhang, P. Zhang, \\ \tiny \color{gray} \emph{Modelling and computation of liquid crystals.} \\ \tiny \color{gray} Acta Numerica, 2021.};
+      \end{tikzpicture}
     \end{center}
   \end{minipage}
 \end{frame}
@@ -345,7 +354,18 @@ Set1-5\nextlist
     \item $k = \omega / c$: (classic) wave-number;
     \item $\mathcal{B}$: encodes the boundary conditions;
   \end{itemize}
-  \footnotetext{\tiny P.E. Farrell, U. Zerbinati, \emph{Time-harmonic waves in Korteweg and nematic-Korteweg fluids.} arXiv, 2024.}
+  \footnotetext[1]{\tiny P.E. Farrell, U. Zerbinati, \emph{Time-harmonic waves in Korteweg and nematic-Korteweg fluids.} arXiv, 2024.}
+  \begin{center}
+    \begin{tikzpicture}[overlay]
+      \draw (4,1.5) rectangle (6,3.5);
+      \node at (5.5,3) {\footnotesize $\Omega$}; 
+      \node at (5,3.7) {\footnotesize $\mathcal{B}$};
+      \draw[-stealth,line width=1.5pt] (4.25,1.75) -- (5.75,1.75);
+      \draw[-stealth,line width=1.5pt] (4.25,2) -- (5.75,2);
+      \draw[-stealth,line width=1.5pt] (4.25,2.25) -- (5.75,2.25);
+      \node at (5,2.45) {\footnotesize $\bm{n}$};
+    \end{tikzpicture}
+  \end{center}
 \end{frame}
 
 \begin{frame}{Boundary conditions\footnotemark}
@@ -365,7 +385,7 @@ Set1-5\nextlist
     \end{equation*}
   \end{enumerate}
   \nicearrow{GOE}{-0.07cm} our analysis covers all cases!
-  \footnotetext{\tiny P.E. Farrell, U. Zerbinati, \emph{Time-harmonic waves in Korteweg and nematic-Korteweg fluids.} arXiv, 2024.}
+  \footnotetext[2]{\tiny P.E. Farrell, U. Zerbinati, \emph{Time-harmonic waves in Korteweg and nematic-Korteweg fluids.} arXiv, 2024.}
 \end{frame}
 
 
@@ -455,13 +475,14 @@ Set1-5\nextlist
     \begin{definition}[Compact operator]
         We call an operator $K \in L(X)$ \emph{compact} if $\forall$ bounded $\seq{u} \subset X$, the sequence $\seq{K u}$ has a convergent subsequence.
     \end{definition}
-    \begin{definition}<2->[Weak T-coercivity]
+    \begin{definition}<2->[Weak T-coercivity\footnotemark]
         $A \in L(X)$ is called \emph{weakly T-coercive} if there $\exists$ $T \in L(X)$ bijective, $K \in L(X)$ compact s.t. $AT + K$ is coercive.   
     \end{definition}
     \begin{itemize}
         \item<3->[\nicearrow{GOE}{-0.06cm}] i.e. $AT = \text{bij.} + \text{comp.}$, so $AT$ is Fredholm with index zero!
         \item<4->[\nicearrow{GOE}{-0.06cm}] if $A$ is weakly T-coercive and injective, then $A$ is bijective
     \end{itemize}
+    \footnotetext{\tiny see e.g., M. Halla, \emph{Galerkin approximation of holomorphic eigenvalue problems: weak T-coercivity and T-compatibility.} Numerische Mathematik, 2021.}
 \end{frame}
 
 
@@ -642,13 +663,16 @@ Set1-5\nextlist
 \begin{frame}{Continuous Analysis: injectivity}
   \begin{minipage}{0.83\textwidth}
     \begin{itemize}
-      \item[\nicearrow{GOE}{-0.07cm}] need to assume that $k^2 \not \in \{ \lami \}_{i \in \mathbb{N}}$
-      \item[\nicearrow{GOE}{-0.07cm}] for \emph{impedance} case: take $v \in \ker a(\cdot,\cdot)$, then 
+      \item<1->[\nicearrow{GOE}{-0.07cm}] need to assume that $k^2 \not \in \{ \lami \}_{i \in \mathbb{N}}$
+      \item<2->[\nicearrow{GOE}{-0.07cm}] for \emph{impedance} case: take $v \in \ker a(\cdot,\cdot)$, then 
       \begin{equation*}
         0 = \vert - \Im a(v,v) \vert \ge \left \vert \frac{\alpha \zeta}{2} \Vert \Delta v \Vert^2_{L^2(\partial \Omega)} + \frac{\theta}{2 \zeta} \Vert v \Vert^2_{L^2(\partial \Omega)} \right \vert
       \end{equation*}
-      \item[\nicearrow{GOE}{-0.07cm}] $\gamma_0 v = 0$ and $\gamma_0 \Delta v = 0$ on $\partial \Omega$, use unique continuation principle to conclude that $v = 0$ in $\Omega$
+      \item<3->[\nicearrow{GOE}{-0.07cm}] $\gamma_0 v = 0$ and $\gamma_0 \Delta v = 0$ on $\partial \Omega$, use unique continuation principle to conclude that $v = 0$ in $\Omega$
     \end{itemize}
+    \begin{block}{We have shown:}<4->
+      $\mathcal{A}$ is (weakly) T-coercive and injective $\Rightarrow$ there $\exists ! u \in X$ s.t. $a(u,v) = (f,v)_{L^2(\Omega)}$ for all $v \in X$
+    \end{block}
   \end{minipage}
   \hfill
   \begin{minipage}{0.12\textwidth}
@@ -872,12 +896,59 @@ Set1-5\nextlist
 \end{frame}
 
 \begin{frame}{Mullen-L\"uthi-Stephen experiment\footnotemark}
-  \footnotetext{\tiny M.E. Mullen, B. L\"uthi, M.J. Stephen, \emph{Sound velocity in a nematic liquid crystal}. Physics review letters, 1972.}
+  \begin{center}
+    \begin{tikzpicture}
+      \node at(0,0) {\includegraphics[width=0.4\textwidth,keepaspectratio]{figures/MLSXYX.png}};
+      \node at(6,0) {\includegraphics[width=0.4\textwidth,keepaspectratio]{figures/MLSYXY.png}};
+      \begin{scope}[yshift=-1cm]
+        \draw<1->[-stealth,line width=1.65pt,color=white] (5,-1) -- (7,-1);
+        \draw<1->[-stealth,line width=1.65pt,color=white] (5,-1.25) -- (7,-1.25);
+        \draw<1->[-stealth,line width=1.65pt,color=white] (5,-1.5) -- (7,-1.5);
+        \draw<1->[-stealth,line width=1.65pt,color=white] (4.5,-1.65) -- (4.5,-0.85);
+        \draw<1->[-stealth,line width=1.65pt,color=white] (4.25,-1.65) -- (4.25,-0.85);
+        \draw<1->[-stealth,line width=1.65pt,color=white] (4.0,-1.65) -- (4.0,-0.85);
+        \draw<1->[-stealth,line width=1.65pt,color=white] (7.5,-1.65) -- (7.5,-0.85);
+        \draw<1->[-stealth,line width=1.65pt,color=white] (7.75,-1.65) -- (7.75,-0.85);
+        \draw<1->[-stealth,line width=1.65pt,color=white] (8.0,-1.65) -- (8.0,-0.85);
+      \end{scope}
+      \begin{scope}[yshift=-1cm]
+        \draw<1->[-stealth,line width=1.65pt,color=white] (-2,-1) -- (-1,-1);
+        \draw<1->[-stealth,line width=1.65pt,color=white] (-2,-1.25) -- (-1,-1.25);
+        \draw<1->[-stealth,line width=1.65pt,color=white] (-2,-1.5) -- (-1,-1.5);
+        \draw<1->[-stealth,line width=1.65pt,color=white] (1,-1) -- (2,-1);
+        \draw<1->[-stealth,line width=1.65pt,color=white] (1,-1.25) -- (2,-1.25);
+        \draw<1->[-stealth,line width=1.65pt,color=white] (1,-1.5) -- (2,-1.5);
+        \draw<1->[-stealth,line width=1.65pt,color=white] (0,-1.65) -- (0,-0.85);
+        \draw<1->[-stealth,line width=1.65pt,color=white] (-0.5,-1.65) -- (-0.5,-0.85);
+        \draw<1->[-stealth,line width=1.65pt,color=white] (0.5,-1.65) -- (0.5,-0.85);
+        \draw<1->[-stealth,line width=1.65pt,color=white] (-0.25,-1.65) -- (-0.25,-0.85);
+        \draw<1->[-stealth,line width=1.65pt,color=white] (0.25,-1.65) -- (0.25,-0.85);
+      \end{scope}
+    \end{tikzpicture}
+  \end{center}
+  \footnotetext[6]{\tiny M.E. Mullen, B. L\"uthi, M.J. Stephen, \emph{Sound velocity in a nematic liquid crystal}. Physics review letters, 1972.}
 \end{frame}
 
 
 \begin{frame}{Conclusion}
-  
+  \begin{itemize}
+    \item<1->[\nicearrow{GOE}{-0.07cm}] we showed well-posedness of the (continuous) nematic Helmholtz-Korteweg equations
+    \begin{itemize}
+      \item[\MVRightArrow] (weak) T-coercivity argument where $T$ flips the sign of 'problematic' eigenfcts.
+      \item[\MVRightArrow] analysis appplies to \emph{sound soft}, \emph{sound hard} \& \emph{impedance} BCs  
+    \end{itemize}
+    \item<2->[\nicearrow{GOE}{-0.07cm}] we analysed the discretization with $H^2$-conforming FEM 
+    \begin{itemize}
+      \item[\MVRightArrow] imposition of essential BCs through Nitsche's method
+      \item[\MVRightArrow] transfer T-coercivity arguments to the discrete level  
+    \end{itemize}
+    \item<3->[\nicearrow{GOE}{-0.07cm}] numerical experiments to study the effect of the nematic field on the propagation of acoustic waves
+  \end{itemize}
+  \begin{center}
+    \begin{tikzpicture}
+      \node<4-> at (0,0) {\LARGE \textbf{Thank you for your attention!}};
+    \end{tikzpicture}
+  \end{center}
 \end{frame}
 
 
