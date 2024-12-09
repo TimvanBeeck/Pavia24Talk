@@ -264,7 +264,7 @@ Set1-5\nextlist
     ](title)
     {
       \color{white}   
-         \LARGE \bfseries \color{black}{Analysis and approximation of the nematic Helmholtz-Korteweg equation}
+         \LARGE \bfseries \color{black}{Analysis and approximation of the nematic Helmholtz--Korteweg equation}
     };
     \node
     [
@@ -318,13 +318,13 @@ Set1-5\nextlist
 \begin{frame}{Introduction}
   \begin{minipage}{0.7\textwidth}
     \begin{itemize}
-      \item \alert{Goal:} describe time-harmonic (acoustic) wave propagation in a \alert{nematic liquid crystal} 
+      \item \alert{Goal:} describe time-harmonic acoustic wave propagation in a \alert{nematic liquid crystal} 
       \item<2-> Korteweg-fluid: $\underline{\underline{\sigma}} = p \underline{\underline{I}} - u_1 \rho (\nabla \rho \otimes \nabla \rho)$
       \item<3-> nematic LC can be considered as a Korteweg-fluid:
       \begin{equation*}
-        \underline{\underline{\sigma}} = p \underline{\underline{I}} - u_1 \rho (\nabla \rho \otimes \nabla \rho) + u_2 (\nabla \rho \cdot \bm{n}) \nabla \rho \otimes \bm{n}
+        \underline{\underline{\sigma}} = p \underline{\underline{I}} - u_1 \rho (\nabla \rho \otimes \nabla \rho) - u_2 (\nabla \rho \cdot \bm{n}) \nabla \rho \otimes \bm{n}
       \end{equation*}
-      \item<4->[\nicearrow{GOE}{-0.07cm}] time harmonic acoustic waves described by the \alert{nematic Helmholtz-Korteweg} equations! 
+      \item<4->[\nicearrow{GOE}{-0.07cm}] time harmonic acoustic waves described by the \alert{nematic Helmholtz--Korteweg} equations! 
       \item<4->[\nicearrow{GOE}{-0.07cm}] how does the alignment of the nematic field influence the propagation of the acoustic wave? 
     \end{itemize}
   \end{minipage}
@@ -340,7 +340,7 @@ Set1-5\nextlist
 \end{frame}
 
 
-\begin{frame}{Nematic Helmholtz-Korteweg equation\footnotemark}
+\begin{frame}{Nematic Helmholtz--Korteweg equation\footnotemark}
   Given $f \in L^2(\Omega)$, find $u : \Omega \to \mathbb{C}$ s.t. 
   \begin{alignat*}{2}
     \alpha \Delta^2 u + \beta \nabla \cdot \nabla(\bm{n}^T (\mathcal{H} u) \bm{n}) - \Delta u - k^2 u &= f \quad &&\text{in } \Omega, \\
@@ -393,7 +393,7 @@ Set1-5\nextlist
 \mysectionpage
 
 \begin{frame}{Indefiniteness of Helmholtz-like problems}
-  Let $X$ be a separable Hilbert space. For given $k >\!\!> 0$, $f \in L^2(\Omega)$, find $u \in X$ s.t. 
+  Let $X$ be a separable Hilbert space. For given $k \gg 0$, $f \in L^2(\Omega)$, find $u \in X$ s.t. 
   \begin{equation}\label{eq:HelmholtzAbstract}
     a(u,v) := e(u,v) - k^2(u,v)_{L^2(\Omega)} = (f,v)_{L^2(\Omega)} \quad \forall v \in X, \tag{P}
   \end{equation}
@@ -413,27 +413,28 @@ Set1-5\nextlist
 
 
 \begin{frame}{Well-posedness}
-    Let $X$ be a Hilbert space, $a : X \times X \to \mathbb{C}$ be a \alert{bounded} sesquilinear form \& $A \in L(X)$ be the associated operator: $(Au,v)_{X} = a(u,v)$ $\forall u,v \in X$. 
+    Let $X$ be a Hilbert space, $a : X \times X \to \mathbb{C}$ be a \alert{bounded} sesquilinear form \& $A \in L(X,X')$ be the associated operator: $\spl Au,v \spr_{X',X} = a(u,v)$ $\forall u,v \in X$. 
     \begin{itemize}
         \item[\nicearrow{GOE}{-0.06cm}] find $u \in X$ s.t. $A u = f$ in $X'$ is \alert{well-posed}
         \begin{itemize}
             \item<2->[\color{black}$\Leftrightarrow$] $A$ is a bounded isomorphism
             \item<3->[\color{black}$\Leftrightarrow$]  $A$ is injective \& $\ran(A)$ is closed \& $A^\ast$ injective
-            \item<4->[\color{black}$\Leftrightarrow$] $\exists \alpha > 0$ s.t. $\Vert A u \Vert_{X} \ge \alpha \Vert u \Vert_{X}$ for all $u \in X$ \& $A^\ast$ injective
-            \item<5->[\color{black}$\Leftrightarrow$] $\underbrace{\inf_{u \in X} \sup_{v \in X} \frac{\vert (Au,v)_X \vert}{\Vert u \Vert_{X} \Vert v \Vert_X} \ge \alpha > 0}_{\text{inf-sup condition}}$ \& $A^\ast$ injective
+            \item<4->[\color{black}$\Leftrightarrow$] $\exists \alpha > 0$ s.t. $\Vert A u \Vert_{X'} \ge \alpha \Vert u \Vert_{X}$ for all $u \in X$ \& $A^\ast$ injective
+            \item<5->[\color{black}$\Leftrightarrow$] $\underbrace{\inf_{u \in X} \sup_{v \in X} \frac{\vert \spl Au,v \spr_{X',X} \vert}{\Vert u \Vert_{X} \Vert v \Vert_X} \ge \alpha > 0}_{\text{inf-sup condition}\footnotemark}$ \& $A^\ast$ injective
         \end{itemize}
     \end{itemize}
     \begin{theorem}<6->[Lax-Milgram]
-        $A$ is coercive, i.e. $\exists \alpha > 0$ s.t. $\Re \{ (Au,u)_X \} \ge \Vert u \Vert_X^2$ $\Rightarrow$ $A$ is a bounded isomorphism
+        $A$ is coercive, i.e. $\exists \alpha > 0$ s.t. $\Re \{ \spl Au,u \spr_{X',X} \} \ge \Vert u \Vert_X^2$ $\Rightarrow$ $A$ is a bounded isomorphism
     \end{theorem}
+    \footnotetext{\tiny F. Brezzi, \emph{On the existence, uniqueness and approximation of saddle-point problems arising from Lagrangian multipliers.}, R.A.I.R.O., 1974.}
 \end{frame}
 
 \begin{frame}{T-coercivity}
     Simple observation: $A$ bijective $\Leftrightarrow$ $\exists$ $T$ bijective s.t. $AT$ is coercive
     \begin{definition}<2->[T-coercivity\footnotemark]
-        We call $A \in L(X)$ \emph{T-coercive} if there exists a bijective operator $T \in L(X)$ s.t. $AT$ is coercive, i.e. 
+        We call $A \in L(X,X')$ \emph{T-coercive} if there exists a bijective operator $T \in L(X)$ s.t. $AT \in L(X,X')$ is coercive, i.e. 
         \begin{equation*}
-            \Re \{ (ATu,u)_{X} \} \ge \alpha \Vert u \Vert_{X}^2
+            \Re \{ \spl ATu,u \spr_{X',X} \} \ge \alpha \Vert u \Vert_{X}^2
         \end{equation*}
     \end{definition}
     \begin{itemize}
@@ -458,9 +459,9 @@ Set1-5\nextlist
         + \ei &\text{ if } i > i_{\ast}.
       \end{cases}
     \end{equation*}
-    \item<4->[\nicearrow{GOE}{-0.07cm}] can show coercivity of $a(\cdot,T \cdot)$ since 
+    \item<4->[\nicearrow{GOE}{-0.07cm}] can show coercivity of $a(T \cdot, \cdot)$ since 
     \begin{equation*}
-      a(\ei,T \ei) = \begin{cases}
+      a(T \ei,\ei) = \begin{cases}
         k^2 - \lami &\text{ if } i \le i_{\ast} \\
         \lami - k^2 &\text{ if } i > i_{\ast}
       \end{cases} > 0.
@@ -473,10 +474,10 @@ Set1-5\nextlist
 
 \begin{frame}{Weak T-coercivity}
     \begin{definition}[Compact operator]
-        We call an operator $K \in L(X)$ \emph{compact} if $\forall$ bounded $\seq{u} \subset X$, the sequence $\seq{K u}$ has a convergent subsequence.
+        We call an operator $K \in L(X,Y)$ \emph{compact} if $\forall$ bounded $\seq{u} \subset X$, the sequence $\seq{K u} \subset Y$ has a convergent subsequence.
     \end{definition}
     \begin{definition}<2->[Weak T-coercivity\footnotemark]
-        $A \in L(X)$ is called \emph{weakly T-coercive} if there $\exists$ $T \in L(X)$ bijective, $K \in L(X)$ compact s.t. $AT + K$ is coercive.   
+        $A \in L(X,X')$ is called \emph{weakly T-coercive} if there $\exists$ $T \in L(X)$ bijective, $K \in L(X,X')$ compact s.t. $AT + K$ is coercive.   
     \end{definition}
     \begin{itemize}
         \item<3->[\nicearrow{GOE}{-0.06cm}] i.e. $AT = \text{bij.} + \text{comp.}$, so $AT$ is Fredholm with index zero!
@@ -507,15 +508,17 @@ Set1-5\nextlist
   \begin{equation}
     a(u,v) = (f,v)_{L^2(\Omega)} \qquad \forall v \in X, \tag{CP} \label{CP}
   \end{equation}
+  \vspace*{-0.4cm}
   where 
   \begin{align*}
-    a(u,v) := &\only<1>{\alpha (\Delta u, \Delta v)_{L^2(\Omega)} + \beta (\bm{n}^T (\mathcal{H} u) \bm{n}, \Delta v)_{L^2(\Omega)} + (\nabla u, \nabla v)_{L^2(\Omega)}}\only<2->{\underbrace{\alpha (\Delta u, \Delta v)_{L^2(\Omega)} + \beta (\bm{n}^T (\mathcal{H} u) \bm{n}, \Delta v)_{L^2(\Omega)} + (\nabla u, \nabla v)_{L^2(\Omega)}}_{=: e(u,v)}} - k^2(u,v)_{L^2(\Omega)} \\
-    &+ (Ku,v)_{H^2(\Omega)}
+    a(u,v) := &\underbrace{\alpha (\Delta u, \Delta v)_{L^2(\Omega)} + \beta (\bm{n}^T (\mathcal{H} u) \bm{n}, \Delta v)_{L^2(\Omega)} + (\nabla u, \nabla v)_{L^2(\Omega)}}_{=: e(u,v)} - k^2(u,v)_{L^2(\Omega)}\\
+    &+ \spl Ku,v \spr_{X',X}
   \end{align*}
   \begin{itemize}
-    \item[\nicearrow{GOE}{-0.06cm}] $K \in L(X)$ encodes the boundary conditions
+    \item[\nicearrow{GOE}{-0.06cm}] $K \in L(X,X')$ encodes the boundary conditions
     \item[\nicearrow{GOE}{-0.06cm}] choice of $X$ depends on BCs: \\
-    \quad \emph{sound soft}: $X = H^2(\Omega) \cap H^1_0(\Omega)$, \emph{sound hard} \& \emph{impedance}: $X = H^2(\Omega)$
+    \quad \emph{sound soft}: $X = H^2_0(\Omega) := H^2(\Omega) \cap H^1_0(\Omega)$, \\
+    \quad \emph{sound hard} \& \emph{impedance}: $X = H^2(\Omega)$
   \end{itemize}
 \end{frame}
 
@@ -524,12 +527,12 @@ Set1-5\nextlist
     \item \emph{sound soft}: $K := 0$
     \item \emph{sound hard}: 
     \begin{equation*}
-      (Ku,v)_{H^2(\Omega)} := - \alpha (\Delta u, \nabla v \cdot \nv)_{L^2(\partial \Omega)} + \beta (\bm{n}^T(\mathcal{H} u) \bm{n},\nabla v \cdot \nv)_{L^2(\partial \Omega)} 
+      \spl Ku,v \spr_{X',X} := - \alpha (\Delta u, \nabla v \cdot \nv)_{L^2(\partial \Omega)} + \beta (\bm{n}^T(\mathcal{H} u) \bm{n},\nabla v \cdot \nv)_{L^2(\partial \Omega)} 
     \end{equation*}
     \item \emph{impedance}:
     \begin{equation*}
       \begin{aligned}
-        (Ku,v)_{H^2(\Omega)} := &- \alpha (\Delta u, \nabla v \cdot \nv)_{L^2(\partial \Omega)} + \alpha i \theta (\Delta u, v)_{L^2(\partial \Omega)} \\
+        \spl Ku,v \spr_{X',X} := &- \alpha (\Delta u, \nabla v \cdot \nv)_{L^2(\partial \Omega)} + \alpha i \theta (\Delta u, v)_{L^2(\partial \Omega)} \\
         &+ \beta i \theta (\bm{n}^T(\mathcal{H} u) \bm{n},v)_{L^2(\partial \Omega)} - \beta (\bm{n}^T(\mathcal{H} u) \bm{n},\nabla v \cdot \nv)_{L^2(\partial \Omega)} \\
         &- i \theta (u,v)_{L^2(\partial \Omega)}
       \end{aligned}
@@ -546,9 +549,9 @@ Set1-5\nextlist
       e(u,v) = \lambda (u,v)_{L^2(\Omega)} \quad \forall v \in H^2_0(\Omega);
     \end{equation*}
     \nicearrow{GOE}{-0.07cm} self-adjointness, well-posedness, compact solution operator
-    \item<2-> Construct $T \in L(X)$ bijective and show that $e(\cdot,\cdot) - k^2(u,v)_{L^2(\Omega)}$ is T-coercive;
-    \item<3-> Show that $K \in L(X)$ is compact;
-    \item<4-> Show that $\mathcal{A} \in L(X)$, $(\mathcal{A}u,v)_{H^2(\Omega)} := a(u,v)$, is injective.
+    \item<2-> Construct $T \in L(X)$ bijective and show that $e(\cdot,\cdot) - k^2(\cdot,\cdot)_{L^2(\Omega)}$ is T-coercive;
+    \item<3-> Show that $K \in L(X,X')$ is compact;
+    \item<4-> Show that $\mathcal{A} \in L(X,X')$, $\spl \mathcal{A}u,v \spr_{X',X} := a(u,v)$, is injective.
   \end{enumerate}
   \begin{center}
     \begin{tikzpicture}[overlay]
@@ -608,7 +611,7 @@ Set1-5\nextlist
       \end{cases}$
       \item<4->[\nicearrow{GOE}{-0.07cm}] We have that 
       \begin{align*}
-        e(&u,Tu) - k^2(u,Tu)_{L^2} \\
+        e(&Tu,u) - k^2(Tu,u)_{L^2} \\
         &= \sum_{i \le i_{\ast}} C_{\lambda} (k^2 - \lami)(\ui)^2 + \sum_{i > i_{\ast}} C_{\lambda} (\lami - k^2)(\ui)^2 \ge \gamma \Vert u \Vert^2_{X}
       \end{align*}
     \end{itemize}
@@ -634,7 +637,7 @@ Set1-5\nextlist
   \begin{minipage}{0.83\textwidth}
     Estimate each boundary term, e.g. for \emph{sound hard} BCs ($\beta = 0$)
     \begin{align*}
-      \Vert K u \Vert_{H^2(\Omega)} &= \sup_{v \in X \setminus \{ 0 \}} \frac{\vert (Ku,v)_{H^2(\Omega)} \vert}{\Vert v \Vert_{H^2(\Omega)}} \\
+      \Vert K u \Vert_{X'} &= \sup_{v \in X \setminus \{ 0 \}} \frac{\vert \spl Ku,v \spr_{X',X} \vert}{\Vert v \Vert_{H^2(\Omega)}} \\
       &\le \sup_{v \in X \setminus \{ 0 \}} \frac{\vert \alpha \vert \Vert \gamma_0 \Delta u \Vert_{L^2(\partial \Omega)} \Vert \gamma_0 \nabla v \cdot \nv \Vert_{L^2(\partial \Omega)} \vert}{\Vert v \Vert_{H^2(\Omega)}} \\
       &\le C \vert \alpha \vert \Vert \gamma_0 \Delta u \Vert_{L^2(\partial \Omega)}
     \end{align*}
@@ -803,7 +806,7 @@ Set1-5\nextlist
     \end{cases}$
     \item<2->[\nicearrow{GOE}{-0.07cm}] as in the continuous case, we have that 
     \begin{align*}
-      &e_h(u_h,T_h u_h) - k^2(u_h,T_h u_h) \\
+      &e_h(T_h u_h,u_h) - k^2(T_h u_h,u_h) \\
       = &\sum_{0 \le i \le i_{\ast}} C_{\lambda_h} (k^2 - \lami_h) (\ui_h)^2 + \sum_{i > i_{\ast}} C_{\lambda_h} (\lami_h - k^2) (\ui_h)^2 \ge \gamma \Vert u_h \Vert^2_{\epsilon},
     \end{align*}
     if $h$ is \alert{small enough} s.t. $\lambda_h^{(i_{\ast})} < k^2$.
@@ -833,7 +836,7 @@ Set1-5\nextlist
 \begin{frame}{Manufactured Solution}
   \begin{minipage}{0.49\textwidth}
     \begin{itemize}
-      \item<1->[\nicearrow{GOE}{-0.07cm}] plane wave solution $u(\bm{x}) = e^{i \bm{d} \cdot \bm{x}}$, choose $\bm{d} \in \mathbb{C}^d$ s.t. $u$ solves the nematic Helmholtz-Korteweg eqs. 
+      \item<1->[\nicearrow{GOE}{-0.07cm}] plane wave solution $u(\bm{x}) = e^{i \bm{d} \cdot \bm{x}}$, choose $\bm{d} \in \mathbb{C}^d$ s.t. $u$ solves the nematic Helmholtz--Korteweg eqs. 
       \item<2->[\nicearrow{GOE}{-0.07cm}] for $u \in H^5(\Omega)$, we can construct $I_h : u \to X_h$ s.t. 
       \begin{equation*}
         \Vert u - I_h u \Vert_{H^2(\Omega)} \le h^3 \Vert u \Vert_{H^5(\Omega)} 
@@ -867,17 +870,18 @@ Set1-5\nextlist
 \end{frame}
 
 \begin{frame}{Gaussian pulse}
+  \begin{overlayarea}{\textwidth}{\textheight}
   \nicearrow{GOE}{-0.07cm} rhs: symmetric Gaussian pulse in $(0,0)$, \emph{impedance} BCs, $k = 40$, $\alpha = 10^{-2}$
   \begin{center}
     \begin{tikzpicture}[scale=1.1]
       \node at (-4,0) {\includegraphics[width=0.23\textwidth,keepaspectratio]{figures/GPIM.png}};
-      \node<2-> at (-1,0) {\includegraphics[width=0.23\textwidth,keepaspectratio]{figures/GPIM-X.png}};
-      \node<2-> at (2,0) {\includegraphics[width=0.23\textwidth,keepaspectratio]{figures/GPIM-XY.png}};
-      \node<2-> at (5,0) {\includegraphics[width=0.23\textwidth,keepaspectratio]{figures/GPIM-Y.png}};
+      \node at (-1,0) {\includegraphics[width=0.23\textwidth,keepaspectratio]{figures/GPIM-X.png}};
+      \node at (2,0) {\includegraphics[width=0.23\textwidth,keepaspectratio]{figures/GPIM-XY.png}};
+      \node at (5,0) {\includegraphics[width=0.23\textwidth,keepaspectratio]{figures/GPIM-Y.png}};
       \node at (-4,-1.75) {\footnotesize $\beta = 0$};
-      \node<2-> at (-1,-1.75) {\footnotesize $\beta = 5\cdot 10^{-3}$};
-      \node<2-> at (2,-1.75) {\footnotesize $\beta = 5\cdot 10^{-3}$};
-      \node<2-> at (5,-1.75) {\footnotesize $\beta = 5\cdot 10^{-3}$};
+      \node at (-1,-1.75) {\footnotesize $\beta = 5\cdot 10^{-3}$};
+      \node at (2,-1.75) {\footnotesize $\beta = 5\cdot 10^{-3}$};
+      \node at (5,-1.75) {\footnotesize $\beta = 5\cdot 10^{-3}$};
       \begin{scope}[yshift=0.2cm]
         \draw<2->[stealth-stealth,line width=1.65pt,color=white] (-1.75,-1) -- (-0.25,-1);
         \draw<2->[stealth-stealth,line width=1.65pt,color=white] (-1.75,-1.25) -- (-0.25,-1.25);
@@ -893,6 +897,7 @@ Set1-5\nextlist
       \end{scope}
     \end{tikzpicture}
   \end{center}
+\end{overlayarea}
 \end{frame}
 
 \begin{frame}{Mullen-L\"uthi-Stephen experiment\footnotemark}
@@ -931,8 +936,9 @@ Set1-5\nextlist
 
 
 \begin{frame}{Conclusion}
+  \begin{overlayarea}{\textwidth}{\textheight}
   \begin{itemize}
-    \item<1->[\nicearrow{GOE}{-0.07cm}] we showed well-posedness of the (continuous) nematic Helmholtz-Korteweg equations
+    \item<1->[\nicearrow{GOE}{-0.07cm}] we showed well-posedness of the (continuous) nematic Helmholtz--Korteweg equations
     \begin{itemize}
       \item[\MVRightArrow] (weak) T-coercivity argument where $T$ flips the sign of 'problematic' eigenfcts.
       \item[\MVRightArrow] analysis appplies to \emph{sound soft}, \emph{sound hard} \& \emph{impedance} BCs  
@@ -949,6 +955,7 @@ Set1-5\nextlist
       \node<4-> at (0,0) {\LARGE \textbf{Thank you for your attention!}};
     \end{tikzpicture}
   \end{center}
+\end{overlayarea}
 \end{frame}
 
 
